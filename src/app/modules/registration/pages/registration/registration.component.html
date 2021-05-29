@@ -1,0 +1,14 @@
+<div class="row registration-container">
+  <form class="text-center" [formGroup]="registrationForm" (ngSubmit)="registerNewUser()">
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Identification number</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="identificationNumber" required>
+        <mat-icon matSuffix>assignment_ind</mat-icon>
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!registrationForm.valid">Generate QR</button>
+    </div>
+  </form>
+</div>
