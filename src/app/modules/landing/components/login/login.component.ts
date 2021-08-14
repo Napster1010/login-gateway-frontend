@@ -10,7 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {  
+export class LoginComponent implements OnInit {
 
   public loginForm = new FormGroup({
     identificationNumber: new FormControl(''),
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
         duration: 5000
       });
       console.error(err);
-    })
+    });
   }
 
 }

@@ -30,7 +30,7 @@ export class RegistrationComponent implements OnInit {
         data: {
           qrString: data
         }
-      })      
+      });
     }, err => {
       console.error(err);
     });

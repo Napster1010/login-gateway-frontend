@@ -10,7 +10,7 @@ import { RegistrationQrData } from 'src/app/data/schemas/RegistrationQrData';
 export class RegistrationQrComponent implements OnInit {
   public qrString: string;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public qrData: RegistrationQrData) { 
+  constructor(@Inject(MAT_DIALOG_DATA) public qrData: RegistrationQrData) {
     this.qrString = qrData.qrString;
   }
 
