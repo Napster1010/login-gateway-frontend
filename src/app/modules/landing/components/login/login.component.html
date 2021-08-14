@@ -1,4 +1,4 @@
-<div class="row login-container">
+<div class="login-container">
   <form class="text-center" [formGroup]="loginForm" (ngSubmit)="loginUser()">
     <div>
       <mat-form-field appearance="outline">
@@ -16,7 +16,7 @@
     </div>
     <div>
       <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Login</button>
-      <a mat-button routerLink="/registration">Register here</a>
+      <a mat-button routerLink="/registration" class="register-here">Register here</a>
     </div>
   </form>
 </div>

@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  REGISTRATION_URL: 'http://localhost:8080/registration/',
+  REGISTRATION: {
+    GENERATE_OTP: 'http://localhost:8080/registration/new',
+    FINALIZE: 'http://localhost:8080/registration/finalize'
+  },
   LOGIN_URL: 'http://localhost:8080/login/',
 };
 
