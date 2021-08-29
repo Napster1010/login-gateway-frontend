@@ -1,6 +1,6 @@
-<div class="row login-container">
+<div class="login-container">
   <form class="text-center" [formGroup]="loginForm" (ngSubmit)="loginUser()">
-    <div>
+    <div> 
       <mat-form-field appearance="outline">
         <mat-label>Identification number</mat-label>
         <input matInput placeholder="Placeholder" formControlName="identificationNumber" required>
@@ -10,13 +10,17 @@
     <div>
       <mat-form-field appearance="outline">
         <mat-label>Security code</mat-label>
-        <input matInput placeholder="Placeholder" formControlName="securityCode" autocomplete="off" required>
-        <mat-icon matSuffix>security</mat-icon>
+        <input matInput placeholder="Placeholder" [type]="hide ? 'password' : 'text'" formControlName="securityCode"
+          autocomplete="off" required>
+        <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
       </mat-form-field>
     </div>
     <div>
       <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Login</button>
-      <a mat-button routerLink="/registration">Register here</a>
+      <a mat-button routerLink="/registration" class="register-here">Register here</a>
     </div>
   </form>
 </div>
