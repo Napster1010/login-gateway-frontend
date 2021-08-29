@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { RegistrationService } from 'src/app/data/services/registration/registration.service';
@@ -20,7 +21,7 @@ export class RegistrationComponent implements OnInit {
     otp: new FormControl('')
   });
 
-  constructor(private registrationService: RegistrationService, private dialogService: MatDialog, private _snackBar: MatSnackBar) { }
+  constructor(private registrationService: RegistrationService, private dialogService: MatDialog, private _snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -42,14 +43,16 @@ export class RegistrationComponent implements OnInit {
           }
         });
 
-        //Close the dialog after 10 seconds
+        //Close the dialog after 60 seconds
         dialogRef.afterOpened().subscribe(_ => {
           setTimeout(() => {
             dialogRef.close();
-          }, 10000);
+          }, 60000);
         });
+
+        this.router.navigate(['/']);
       }, err => {
-        this._snackBar.open(err.error.message, 'Close', {
+        this._snackBar.open('Invalid registration OTP!', 'Close', {
           horizontalPosition: 'start',
           verticalPosition: 'bottom',
           duration: 5000

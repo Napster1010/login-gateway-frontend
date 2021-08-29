@@ -16,6 +16,9 @@ export class LoginComponent implements OnInit {
     identificationNumber: new FormControl(''),
     securityCode: new FormControl(''),
   });
+
+  public hide = true;
+
   constructor(private loginService: LoginService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
@@ -24,7 +27,7 @@ export class LoginComponent implements OnInit {
   loginUser() {
     const loginRequest: LoginRequest = {
       identificationNumber: this.loginForm.controls['identificationNumber'].value,
-      securityCode: this.loginForm.controls['securityCode'].value,
+      code: this.loginForm.controls['securityCode'].value,
     };
     this.loginService.loginUser(loginRequest)
     .pipe(take(1))
