@@ -1,10 +1,13 @@
+import { LoginGuard } from './data/guards/login/login.guard';
+import { AuthGuard } from './data/guards/auth/auth.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./modules/landing/landing.module').then(m => m.LandingModule)
+    loadChildren: () => import('./modules/landing/landing.module').then(m => m.LandingModule),
+    canActivate: [LoginGuard]
   },
   {
     path: 'registration',
@@ -12,7 +15,12 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
+    loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
 
