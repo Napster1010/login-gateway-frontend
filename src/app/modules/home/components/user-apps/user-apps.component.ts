@@ -1,7 +1,6 @@
 import { AuthService } from './../../../../data/services/auth/auth.service';
 import { App } from './../../../../data/schemas/App';
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-apps',
@@ -13,7 +12,7 @@ export class UserAppsComponent implements OnInit {
   @Input()
   public userApps: App[];
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
