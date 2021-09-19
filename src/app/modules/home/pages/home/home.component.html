@@ -1,0 +1,4 @@
+<div *ngIf="userApps$ | async as userApps">
+  <app-nav></app-nav>
+  <app-user-apps [userApps] = "userApps"></app-user-apps>
+</div>

@@ -1,9 +1,10 @@
-import { take } from 'rxjs/operators';
+import { AuthService } from './../../../../data/services/auth/auth.service';
+import { shareReplay, take } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LoginRequest } from 'src/app/data/schemas/LoginRequest';
-import { LoginService } from 'src/app/data/services/login/login.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   public hide = true;
 
-  constructor(private loginService: LoginService, private _snackBar: MatSnackBar) { }
+  constructor(private authService: AuthService, private _snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -29,15 +30,11 @@ export class LoginComponent implements OnInit {
       identificationNumber: this.loginForm.controls['identificationNumber'].value,
       code: this.loginForm.controls['securityCode'].value,
     };
-    this.loginService.loginUser(loginRequest)
+    this.authService.loginUser(loginRequest)
     .pipe(take(1))
-    .subscribe(data => {
-      this._snackBar.open('Login successful!', 'Close', {
-        horizontalPosition: 'start',
-        verticalPosition: 'bottom',
-        duration: 5000
-      });
-      console.log(data);
+    .subscribe(authToken => {
+      this.authService.storeUserAuthToken(authToken);
+      this.router.navigate(['/home']);
     }, err => {
       this._snackBar.open('Login unsuccessful!', 'Close', {
         horizontalPosition: 'start',
