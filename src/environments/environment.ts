@@ -9,6 +9,7 @@ export const environment = {
     FINALIZE: 'http://localhost:8080/registration/finalize'
   },
   LOGIN_URL: 'http://localhost:8080/auth/login/',
+  USER_APPS_URL: 'http://localhost:8080/user-app-mapping/apps/'
 };
 
 /*

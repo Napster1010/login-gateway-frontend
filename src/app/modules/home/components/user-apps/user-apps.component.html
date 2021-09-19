@@ -1,0 +1,13 @@
+<div *ngIf="userApps" class="apps-container">
+  <div *ngFor="let app of userApps" class="app-card-container">
+    <mat-card class="app-card">
+      <mat-card-title>{{ app.name }}</mat-card-title>
+      <mat-card-content>
+        {{ app.url }}
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button (click)="navigateToApp(app.url)">Login</button>
+      </mat-card-actions>
+    </mat-card>  
+  </div>  
+</div>

@@ -1,5 +1,6 @@
+import { User } from '../../schemas/User';
 import { LoginRequest } from './../../schemas/LoginRequest';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthApiService } from './auth-api.service';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
@@ -9,6 +10,9 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class AuthService {
+
+  private readonly _currentUser = new BehaviorSubject<User | null>(null);
+  public readonly currentUser$: Observable<User | null> = this._currentUser.asObservable();
 
   constructor(private authApiService: AuthApiService, private jwtHelperService: JwtHelperService) { }
 
@@ -28,6 +32,21 @@ export class AuthService {
     localStorage.setItem('currentUser', authToken);
   }
 
+  public syncCurrentUser() {
+    const authToken = this.getCurrentUserAuthToken();
+    if (authToken) {
+      this._currentUser.next(this.getDecodedUserAuthToken(authToken));
+    }
+  }
+
+  private getDecodedUserAuthToken(authToken: string): User {
+    const decodedToken = this.jwtHelperService.decodeToken(authToken);
+    return {
+      identificationNumber: decodedToken.sub,
+      name: decodedToken.name
+    };
+  }
+
   public getCurrentUserAuthToken(): string | null {
     return localStorage.getItem('currentUser');
   }
@@ -38,5 +57,9 @@ export class AuthService {
       return false;
     }
     return !this.jwtHelperService.isTokenExpired(authToken);
+  }
+
+  public logoutCurrentUser() {
+    localStorage.removeItem('currentUser');
   }
 }

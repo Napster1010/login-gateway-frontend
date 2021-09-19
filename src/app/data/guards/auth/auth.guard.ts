@@ -15,6 +15,7 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     if (this.authService.isCurrentUserLoggedIn()) {
+      this.authService.syncCurrentUser();
       return true;
     }
 

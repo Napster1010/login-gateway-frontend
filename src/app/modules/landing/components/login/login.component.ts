@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
     this.authService.loginUser(loginRequest)
     .pipe(take(1))
     .subscribe(authToken => {
-      console.log('Redirecting to /home');
       this.authService.storeUserAuthToken(authToken);
       this.router.navigate(['/home']);
     }, err => {
