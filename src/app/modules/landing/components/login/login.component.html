@@ -1,26 +1,35 @@
 <div class="login-container">
-  <form class="text-center" [formGroup]="loginForm" (ngSubmit)="loginUser()">
-    <div>
-      <mat-form-field appearance="outline">
-        <mat-label>Identification number</mat-label>
-        <input matInput placeholder="Placeholder" formControlName="identificationNumber" required>
-        <mat-icon matSuffix>assignment_ind</mat-icon>
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field appearance="outline">
-        <mat-label>Security code</mat-label>
-        <input matInput placeholder="Placeholder" [type]="hide ? 'password' : 'text'" formControlName="securityCode"
-          autocomplete="off" required>
-        <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-          [attr.aria-pressed]="hide">
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-      </mat-form-field>
-    </div>
-    <div>
-      <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Login</button>
-      <a mat-button routerLink="/registration" class="register-here">Register here</a>
-    </div>
-  </form>
+  <div class="header-container">
+    <span class="title">Login Gateway</span>    
+  </div>
+  <div class="form-container">
+    <form class="text-center" [formGroup]="loginForm" (ngSubmit)="loginUser()">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Identification number</mat-label>
+          <input matInput placeholder="Placeholder" formControlName="identificationNumber" required>
+          <mat-icon matSuffix>assignment_ind</mat-icon>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Security code</mat-label>
+          <input matInput placeholder="Placeholder" [type]="hide ? 'password' : 'text'" formControlName="securityCode"
+            autocomplete="off" required>
+          <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      <div class="action-container">
+        <div class="login-button-container">
+          <button mat-raised-button color="primary" type="submit">Login</button>
+        </div>
+        <div class="register-here-container">
+          <a mat-button routerLink="/registration" class="register-here">Register here</a>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
