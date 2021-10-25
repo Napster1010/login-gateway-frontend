@@ -1,7 +1,50 @@
 .login-container {
-  padding-top: 8rem;
-}
+  margin-bottom: 2rem;
 
-.register-here {
-  margin-left: 15px;
+  .header-container {
+    height: 70px;
+    background-color: rgb(41, 39, 39);
+    margin-bottom: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .title {
+      font-size: 20px;
+      color: rgb(255, 255, 255);
+    }
+  }  
+
+  .form-container {
+    padding-left: 5%;
+    padding-right: 5%;
+
+    mat-form-field {
+      width: 100%;
+    }
+
+    .action-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      row-gap: 5px;
+      column-gap: 5px;
+
+      .login-button-container {
+        flex: 1;
+        button {
+          width: 100%;
+        }
+      }
+
+      .register-here-container {
+        flex: 1;
+        button {
+          width: 100%;
+        }
+      }
+    }
+  }
 }
