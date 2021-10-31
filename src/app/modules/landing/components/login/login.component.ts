@@ -26,6 +26,10 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser() {
+    if (this.loginForm.invalid) {
+      return;
+    }
+
     const loginRequest: LoginRequest = {
       identificationNumber: this.loginForm.controls['identificationNumber'].value,
       code: this.loginForm.controls['securityCode'].value,

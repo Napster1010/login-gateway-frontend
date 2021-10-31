@@ -1,3 +1,43 @@
 .registration-container {
-  padding-top: 8rem;
+  width: 100%;  
+  min-height: 100vh;
+  padding: 50px;
+  background: #f0f0f0;
+
+  .inner-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    .registration-form-container {
+      width: 400px;
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0px 0px 10px 5px rgb(0 0 0 / 0.2);
+    }
+    
+    .registration-header {
+      text-align: center;
+      width: 100%;
+      padding-bottom: 3rem;
+
+      .title-container {
+        padding-top: 1.5rem;
+
+        .title {
+          font-size: 20px;
+          font-weight: bold;
+        }
+      }
+    }
+    
+    img {
+      width: 7rem;
+      height: 7rem;
+      border-radius: 50%;
+    }
+  }
 }
