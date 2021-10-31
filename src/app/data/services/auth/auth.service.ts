@@ -60,6 +60,7 @@ export class AuthService {
   }
 
   public logoutCurrentUser() {
+    console.log('LOGGING OUT CURRENT USER!');
     this.authApiService.logoutUser()
       .pipe(take(1))
       .subscribe(() => {
