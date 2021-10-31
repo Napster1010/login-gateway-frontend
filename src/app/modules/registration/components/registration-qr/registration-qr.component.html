@@ -1,8 +1,12 @@
 <div *ngIf="qrString" class="registration-qr-container">
-  <div>
-    <h3>Please scan the QR code:</h3>
-  </div>
-  <div>
+  <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+    <mat-icon class="close-icon" color="warn">close</mat-icon>
+  </button>
+  <h1 mat-dialog-title>Your registration QR:</h1>
+  <div mat-dialog-content>
     <img [src]="qrString" />
-  </div>
+    <div class="pt-3" *ngIf="currentProgress$ | async as progress">
+      <mat-progress-bar mode="determinate" value="{{ progress }}"></mat-progress-bar>
+    </div>
+    </div>
 </div>

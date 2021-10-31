@@ -6,12 +6,14 @@ import { RegistrationComponent } from './pages/registration/registration.compone
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegistrationQrComponent } from './components/registration-qr/registration-qr.component';
+import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
 
 
 @NgModule({
   declarations: [
     RegistrationComponent,
-    RegistrationQrComponent
+    RegistrationQrComponent,
+    RegistrationFormComponent,
   ],
   imports: [
     CommonModule,

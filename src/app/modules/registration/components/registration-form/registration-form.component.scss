@@ -1,0 +1,49 @@
+.registration-container {
+  margin-bottom: 2rem;
+
+  .header-container {
+    height: 70px;
+    background-color: rgb(41, 39, 39);
+    margin-bottom: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .title {
+      font-size: 20px;
+      color: rgb(255, 255, 255);
+    }
+  }  
+
+  .form-container {
+    padding-left: 5%;
+    padding-right: 5%;
+
+    mat-form-field {
+      width: 100%;
+    }
+
+    .generate-otp-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+
+      button {
+        flex: 1;
+        width: 100%;        
+      }
+    }
+
+    .register-here-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+
+      button {
+        flex: 1;
+        width: 100%;        
+      }
+    }
+  }
+}

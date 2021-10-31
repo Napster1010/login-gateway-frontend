@@ -1,27 +1,13 @@
 <div class="registration-container">
-  <form class="text-center" [formGroup]="registrationForm">
-    <div>
-      <mat-form-field appearance="outline">
-        <mat-label>Identification number</mat-label>
-        <input matInput placeholder="Enter here" formControlName="identificationNumber" required autofocus>
-        <mat-icon matSuffix>assignment_ind</mat-icon>
-      </mat-form-field>
-    </div>
-    <div *ngIf="!(otpGenerated$ | async); else otpVerification">
-      <button mat-raised-button type="button" color="primary" (click)="generateOtp()"
-        [disabled]="!registrationForm.controls.identificationNumber.valid">Generate OTP</button>
-    </div>
-    <ng-template #otpVerification>
-      <mat-form-field appearance="outline">
-        <mat-label>OTP</mat-label>
-        <input matInput placeholder="Enter here" formControlName="otp" required autofocus autocomplete="off">
-        <mat-icon matSuffix>security</mat-icon>
-      </mat-form-field>
-      <div>
-        <button mat-raised-button type="button" color="primary" (click)="finalizeRegistration()"
-          [disabled]="!registrationForm.valid">Register</button>
+  <div class="container inner-container">
+    <div class="registration-header">
+      <img src="/assets/mppkvvcl.png" alt="">
+      <div class="title-container">
+        <span class="title">MPPKVVCL, Indore</span>
       </div>
-    </ng-template>
-
-  </form>
+    </div>
+    <div class="registration-form-container">
+      <app-registration-form></app-registration-form>
+    </div>
+  </div>
 </div>
