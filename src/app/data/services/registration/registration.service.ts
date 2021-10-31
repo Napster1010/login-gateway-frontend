@@ -10,12 +10,12 @@ export class RegistrationService {
   constructor(private httpClient: HttpClient) { }
 
   public generateNewRegistrationOtp(identificationNumber: string) {
-    const url = `${environment.REGISTRATION.GENERATE_OTP}/${identificationNumber}`;
+    const url = `${environment.REGISTRATION_API.GENERATE_OTP}/${identificationNumber}`;
     return this.httpClient.post<void>(url, {});
   }
 
   public finalizeRegistration(identificationNumber: string, otp: string) {
-    const url = environment.REGISTRATION.FINALIZE;
+    const url = environment.REGISTRATION_API.FINALIZE;
     const requestBody = {
       identificationNumber,
       otp
