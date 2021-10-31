@@ -11,7 +11,7 @@ export const environment = {
   LOGIN_API: 'http://localhost:8080/auth/login/',
   LOGOUT_API: 'http://localhost:8080/auth/logout/',
   USER_APPS_API: 'http://localhost:8080/user-app-mapping/apps/',
-  UPDATE_APP_NAVIGATION_ACTIVITY_API: 'hhtp://localhost'
+  UPDATE_APP_NAVIGATION_ACTIVITY_API: 'http://localhost:8080/user-activity-log/'
 };
 
 /*

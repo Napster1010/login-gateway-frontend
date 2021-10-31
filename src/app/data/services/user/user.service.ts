@@ -13,7 +13,7 @@ export class UserService {
   constructor(private httpClient: HttpClient, private authService: AuthService) { }
 
   public getUserApps(identificationNumber: string): Observable<App[]> {
-    const url = environment.USER_APPS_URL + identificationNumber;
+    const url = environment.USER_APPS_API + identificationNumber;
     return this.httpClient.get<App[]>(url);
   }
 }

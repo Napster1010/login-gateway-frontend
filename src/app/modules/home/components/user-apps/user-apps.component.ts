@@ -1,3 +1,4 @@
+import { concatMap, take, tap } from 'rxjs/operators';
 import { AuthService } from './../../../../data/services/auth/auth.service';
 import { App } from './../../../../data/schemas/App';
 import { Component, Input, OnInit } from '@angular/core';
@@ -20,10 +21,13 @@ export class UserAppsComponent implements OnInit {
 
   public navigateToApp(appId: number, appUrl: string) {
     // Send request to the backend for updating the activity log.
-    this.userActivityLogService.updateAppNavigationActivity(appId);
+    this.userActivityLogService.updateAppNavigationActivity(appId)
+      .pipe(
+        take(1),
+        // Logout the current user before navigating the the app
+        tap(() => this.authService.logoutCurrentUser())
+      ).subscribe();
 
-    // Logout the current user before navigating the the app
-    this.authService.logoutCurrentUser();
     window.location.href = appUrl;
   }
 

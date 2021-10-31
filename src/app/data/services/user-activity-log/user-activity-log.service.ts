@@ -11,6 +11,6 @@ export class UserActivityLogService {
   constructor(private httpClient: HttpClient) { }
 
   public updateAppNavigationActivity(appId: number): Observable<void> {
-    return this.httpClient.post<void>(`${environment.UPDATE_APP_NAVIGATION_ACTIVITY_API}/${appId}`, {});
+    return this.httpClient.post<void>(`${environment.UPDATE_APP_NAVIGATION_ACTIVITY_API}${appId}`, {});
   }
 }
