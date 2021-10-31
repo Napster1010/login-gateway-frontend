@@ -3,7 +3,7 @@ import { LoginRequest } from './../../schemas/LoginRequest';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthApiService } from './auth-api.service';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
@@ -60,6 +60,12 @@ export class AuthService {
   }
 
   public logoutCurrentUser() {
+    this.authApiService.logoutUser()
+      .pipe(take(1))
+      .subscribe(() => {
+        console.log('User logged out succeefully!');
+      });
+
     localStorage.removeItem('currentUser');
   }
 }

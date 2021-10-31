@@ -12,9 +12,13 @@ export class AuthApiService {
   constructor(private httpClient: HttpClient) { }
 
   public loginUser(loginRequest: LoginRequest): Observable<HttpResponse<void>> {
-    return this.httpClient.post<void>(environment.LOGIN_URL, loginRequest, {
+    return this.httpClient.post<void>(environment.LOGIN_API, loginRequest, {
       observe: 'response'
     });
+  }
+
+  public logoutUser(): Observable<void> {
+    return this.httpClient.post<void>(environment.LOGOUT_API, {});
   }
 
 }

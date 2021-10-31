@@ -4,12 +4,14 @@
 
 export const environment = {
   production: false,
-  REGISTRATION: {
+  REGISTRATION_API: {
     GENERATE_OTP: 'http://localhost:8080/registration/new',
     FINALIZE: 'http://localhost:8080/registration/finalize'
   },
-  LOGIN_URL: 'http://localhost:8080/auth/login/',
-  USER_APPS_URL: 'http://localhost:8080/user-app-mapping/apps/'
+  LOGIN_API: 'http://localhost:8080/auth/login/',
+  LOGOUT_API: 'http://localhost:8080/auth/logout/',
+  USER_APPS_API: 'http://localhost:8080/user-app-mapping/apps/',
+  UPDATE_APP_NAVIGATION_ACTIVITY_API: 'hhtp://localhost'
 };
 
 /*
