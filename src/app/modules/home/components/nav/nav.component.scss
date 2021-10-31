@@ -1,7 +1,9 @@
 .nav-container {
-  margin-top: 5px;
+  margin-top: 10px;
   margin-right: 10px;
   display: flex;
   flex-direction: row-reverse;
   flex-wrap: nowrap;
+  column-gap: 10px;
+  align-items: baseline;
 }

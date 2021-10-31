@@ -5,6 +5,7 @@ import { AuthApiService } from './auth-api.service';
 import { Injectable } from '@angular/core';
 import { map, take } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,8 @@ export class AuthService {
   }
 
   public storeUserAuthToken(authToken: string) {
+    // Store auth token and start the session timer.
+    localStorage.setItem('timer', (environment.SESSION_TIME * 60).toString());
     localStorage.setItem('currentUser', authToken);
   }
 
@@ -60,7 +63,6 @@ export class AuthService {
   }
 
   public logoutCurrentUser() {
-    console.log('LOGGING OUT CURRENT USER!');
     this.authApiService.logoutUser()
       .pipe(take(1))
       .subscribe(() => {

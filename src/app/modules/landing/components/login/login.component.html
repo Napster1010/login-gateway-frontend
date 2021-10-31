@@ -14,7 +14,7 @@
       <div>
         <mat-form-field appearance="outline">
           <mat-label>Security code</mat-label>
-          <input matInput placeholder="Placeholder" [type]="hide ? 'password' : 'text'" formControlName="securityCode"
+          <input matInput placeholder="Security code" [type]="hide ? 'password' : 'text'" formControlName="securityCode"
             autocomplete="off" required>
           <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hide">
