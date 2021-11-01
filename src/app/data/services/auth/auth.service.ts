@@ -1,19 +1,18 @@
-import { User } from '../../schemas/User';
+import { UserToken } from './../../schemas/User';
 import { LoginRequest } from './../../schemas/LoginRequest';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthApiService } from './auth-api.service';
 import { Injectable } from '@angular/core';
 import { map, take } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private readonly _currentUser = new BehaviorSubject<User | null>(null);
-  public readonly currentUser$: Observable<User | null> = this._currentUser.asObservable();
+  private readonly _currentUser = new BehaviorSubject<UserToken | null>(null);
+  public readonly currentUser$: Observable<UserToken | null> = this._currentUser.asObservable();
 
   constructor(private authApiService: AuthApiService, private jwtHelperService: JwtHelperService) { }
 
@@ -29,9 +28,9 @@ export class AuthService {
     );
   }
 
-  public storeUserAuthToken(authToken: string) {
+  public storeAuthTokenForNewlyLoggedInUser(authToken: string) {
     // Store auth token and start the session timer.
-    localStorage.setItem('timer', (environment.SESSION_TIME * 60).toString());
+    localStorage.setItem('lt', Date.now().toString());
     localStorage.setItem('currentUser', authToken);
   }
 
@@ -42,7 +41,7 @@ export class AuthService {
     }
   }
 
-  private getDecodedUserAuthToken(authToken: string): User {
+  private getDecodedUserAuthToken(authToken: string): UserToken {
     const decodedToken = this.jwtHelperService.decodeToken(authToken);
     return {
       identificationNumber: decodedToken.sub,
@@ -69,6 +68,7 @@ export class AuthService {
         console.log('User logged out succeefully!');
       });
 
+    localStorage.removeItem('lt');
     localStorage.removeItem('currentUser');
   }
 }

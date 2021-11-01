@@ -1,10 +1,11 @@
-import { App } from './../../../../data/schemas/App';
+import { User, UserToken } from './../../../../data/schemas/User';
 import { AuthService } from './../../../../data/services/auth/auth.service';
-import { User } from './../../../../data/schemas/User';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
-import { Subject, Observable } from 'rxjs';
+import { Subject, BehaviorSubject, Observable } from 'rxjs';
 import { UserService } from 'src/app/data/services/user/user.service';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -13,27 +14,57 @@ import { UserService } from 'src/app/data/services/user/user.service';
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  public currentUser: User | null;
-  public userApps$: Observable<App[]>;
+  // public userApps$: Observable<App[]>;
+  // this.userApps$ = this.userService.getUserApps(this.currentUser.identificationNumber);
+  public user$: Observable<User>;
+  public timer$: BehaviorSubject<string>;
+  public currentUser: UserToken;
 
   private unsubscribe$: Subject<Boolean> = new Subject();
 
-  constructor(private authService: AuthService, private userService: UserService) { }
+  constructor(private authService: AuthService, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.subscribeToCurrentLoggedInUser();
     if (this.currentUser) {
-      this.userApps$ = this.userService.getUserApps(this.currentUser?.identificationNumber);
+      this.user$ = this.userService.getUser(this.currentUser.identificationNumber);
     }
+
+    // Maintain the session timer.
+    let loginEpoch: number;
+    const loginEpochRaw = localStorage.getItem('lt');
+    if (!!loginEpochRaw && (Number(loginEpochRaw) > 0) && (Number(loginEpochRaw) <= Date.now())) {
+      loginEpoch = Number(loginEpochRaw);
+    } else {
+      loginEpoch = Date.now();
+    }
+    const msElapsed = Date.now() - loginEpoch;
+    let timeLeft = (environment.SESSION_TIME*60) - (msElapsed/1000);
+    // Do a little safety check to make sure time left is always positive.
+    if (timeLeft < 0) {
+      timeLeft = 1;
+    }
+    setTimeout(() => {
+      this.logout();
+    }, (Math.floor(timeLeft)*1000));
   }
 
   private subscribeToCurrentLoggedInUser() {
     this.authService.currentUser$.pipe(
       takeUntil(this.unsubscribe$)
-    ).subscribe(data => this.currentUser = data);
+    ).subscribe(data => {
+      if (data) {
+        this.currentUser = data;
+      }
+    });
   }
 
   ngOnDestroy(): void {
     this.unsubscribe$.next(true);
+  }
+
+  public logout() {
+    this.authService.logoutCurrentUser();
+    this.router.navigate(['/login']);
   }
 }
