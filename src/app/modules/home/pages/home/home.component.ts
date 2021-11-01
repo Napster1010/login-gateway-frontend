@@ -1,3 +1,4 @@
+import { App } from './../../../../data/schemas/App';
 import { User, UserToken } from './../../../../data/schemas/User';
 import { AuthService } from './../../../../data/services/auth/auth.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
@@ -14,9 +15,8 @@ import { environment } from 'src/environments/environment';
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  // public userApps$: Observable<App[]>;
-  // this.userApps$ = this.userService.getUserApps(this.currentUser.identificationNumber);
   public user$: Observable<User>;
+  public userApps$: Observable<App[]>;
   public timer$: BehaviorSubject<string>;
   public currentUser: UserToken;
 
@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.subscribeToCurrentLoggedInUser();
     if (this.currentUser) {
       this.user$ = this.userService.getUser(this.currentUser.identificationNumber);
+      this.userApps$ = this.userService.getUserApps(this.currentUser.identificationNumber);
     }
 
     // Maintain the session timer.

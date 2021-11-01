@@ -1,0 +1,21 @@
+<div class="side-nav-container">
+  <div class="side-nav-header">
+    <img src="/assets/mppkvvcl.png" alt="">
+    <div class="header-title-container">
+      <div class="title-container">
+        <span class="title">Login Gateway</span>
+      </div>
+    </div>
+  </div>
+  <div class="side-nav-content" *ngIf="user">
+    <div class="info-item">
+      <span class="info-item-title">{{ user.name }}</span>
+    </div>
+    <div class="info-item">
+      <span class="info-item-title">{{ user.identificationNumber }}</span>
+    </div>
+    <div class="info-item">
+      <span class="info-item-title">{{ user.location.name }}</span>
+    </div>
+  </div>
+</div>

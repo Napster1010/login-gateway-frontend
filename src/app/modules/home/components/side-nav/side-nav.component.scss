@@ -1,0 +1,55 @@
+.side-nav-container {
+  margin-left: 1.25rem;
+  margin-top: 1.25rem;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 15px;
+  height: 100vh;
+  width: 100%;
+
+  .side-nav-header {
+    text-align: center;
+
+    img {      
+      margin-top: 7px;
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+    }
+
+    .header-title-container {
+      display: flex;
+      align-items: center;
+      height: 50px;
+      background-color: black;
+      margin-left: -1px;
+      margin-top: 7px;
+
+      .title-container {
+        width: 100%;
+        text-align: center;
+
+        .title {
+          color: white;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+
+  .side-nav-content {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    row-gap: 7px;
+
+    .info-item {
+      width: 100%;
+      .info-item-title {
+        font-size: 18px;
+      }
+    }
+  }
+}

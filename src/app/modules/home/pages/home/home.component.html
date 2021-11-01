@@ -1,3 +1,13 @@
-<div *ngIf="user$ | async as user">
-  <app-nav></app-nav>
+<div class="home-container" *ngIf="user$ | async as user">
+  <div class="row">
+    <div class="col-2">
+      <app-side-nav [user]="user"></app-side-nav>
+    </div>
+    <div class="col-8" *ngIf="userApps$ | async as userApps">
+      <app-user-apps [userApps]="userApps"></app-user-apps>
+    </div>
+    <div class="col-2">
+      <app-nav></app-nav>
+    </div>
+  </div>
 </div>
