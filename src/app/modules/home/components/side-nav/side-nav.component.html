@@ -8,14 +8,17 @@
     </div>
   </div>
   <div class="side-nav-content" *ngIf="user">
-    <div class="info-item">
-      <span class="info-item-title">{{ user.name }}</span>
+    <div class="user-info">
+      <div class="mt-3">
+        <span class="info-item-title">{{ user.name }}</span>
+      </div>
+      <div class="mt-3">
+        <span class="info-item-title">{{ user.location.name }}</span>
+      </div>
     </div>
-    <div class="info-item">
-      <span class="info-item-title">{{ user.identificationNumber }}</span>
-    </div>
-    <div class="info-item">
-      <span class="info-item-title">{{ user.location.name }}</span>
+
+    <div class="nav-section">
+      <button mat-raised-button color="primary" (click)="logout()">Logout</button>
     </div>
   </div>
 </div>

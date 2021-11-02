@@ -1,11 +1,30 @@
 .apps-container {
-  margin-top: 1rem;
-  margin-left: 5px;
+  margin-top: 1.25rem;
+  margin-left: 15px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-}
+  row-gap: 15px;
+  column-gap: 15px;
 
-.app-card-container {
-  margin-right: 15px;
+  .app-card-container {
+    width: 23%;
+    .app-card {
+      border-radius: 15px;
+      flex: 1;
+      box-shadow: 0px 0px 2.5px 2.5px rgb(0 0 0 / 0.2);
+
+      .card-actions {
+        text-align: right;
+
+        .navigate-button {
+          width: 7rem;
+          border-radius: 15px;
+          box-shadow: 0px 0px 2.5px 2.5px rgb(0 0 0 / 0.2);
+          background-color: rgb(72, 121, 228);
+          color: white;
+        }
+      }
+    }
+  }
 }
