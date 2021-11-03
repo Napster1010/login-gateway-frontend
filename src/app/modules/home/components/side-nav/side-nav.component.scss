@@ -1,16 +1,15 @@
 .side-nav-container {
-  margin-left: 1.25rem;
+  margin-left: 0.5rem;
   margin-top: 1.25rem;
   border-width: 3px;
   border-style: solid;
   border-radius: 15px;
-  height: 94vh;
   width: 100%;
 
   .side-nav-header {
     text-align: center;
 
-    img {      
+    img {
       margin-top: 7px;
       width: 4rem;
       height: 4rem;
@@ -23,6 +22,7 @@
       height: 50px;
       background-color: black;
       margin-left: -1px;
+      margin-right: -1px;
       margin-top: 7px;
 
       .title-container {
@@ -50,10 +50,16 @@
       }
     }
 
-    .nav-section {
-      margin-top: 7px;
+    .nav-footer {
+      margin-top: 3rem;
       margin-right: -1px;
+      margin-left: -1px;
       width: 100%;
+
+      .nav-footer-button {
+        margin-bottom: 20px;
+        width: 95%;
+      }
     }
   }
 }
