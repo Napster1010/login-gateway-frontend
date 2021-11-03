@@ -10,8 +10,10 @@ export const environment = {
   },
   LOGIN_API: 'http://localhost:8080/auth/login/',
   LOGOUT_API: 'http://localhost:8080/auth/logout/',
+  USER_API: 'http://localhost:8080/user/',
   USER_APPS_API: 'http://localhost:8080/user-app-mapping/apps/',
-  UPDATE_APP_NAVIGATION_ACTIVITY_API: 'http://localhost:8080/user-activity-log/'
+  UPDATE_APP_NAVIGATION_ACTIVITY_API: 'http://localhost:8080/user-activity-log/',
+  SESSION_TIME: 4.5
 };
 
 /*

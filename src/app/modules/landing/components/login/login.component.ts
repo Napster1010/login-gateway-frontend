@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     this.authService.loginUser(loginRequest)
     .pipe(take(1))
     .subscribe(authToken => {
-      this.authService.storeUserAuthToken(authToken);
+      this.authService.storeAuthTokenForNewlyLoggedInUser(authToken);
       this.router.navigate(['/home']);
     }, err => {
       this._snackBar.open('Login unsuccessful!', 'Close', {

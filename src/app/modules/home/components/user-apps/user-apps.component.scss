@@ -1,11 +1,26 @@
 .apps-container {
-  margin-top: 1rem;
+  margin-top: 1.25rem;
   margin-left: 5px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-}
+  row-gap: 15px;
+  column-gap: 15px;
 
-.app-card-container {
-  margin-right: 15px;
+  .app-card-container {
+    width: 18rem;
+    .app-card {
+      border-radius: 15px;
+      flex: 1;
+      box-shadow: 0px 0px 2.5px 2.5px rgb(0 0 0 / 0.2);
+
+      .card-actions {
+        text-align: right;
+
+        .navigate-button {
+          width: 7rem;
+        }
+      }
+    }
+  }
 }
