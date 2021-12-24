@@ -2,7 +2,6 @@ import { JwtInterceptor } from './data/helpers/jwt.interceptor';
 import { AuthService } from './data/services/auth/auth.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,7 +13,10 @@ import { JwtConfig, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 export function jwtOptionsFactory(authService: AuthService): JwtConfig {
   return {
     tokenGetter: () => {
-      return authService.getCurrentUserAuthToken();
+      // console.log('inside token getter!');
+      // console.log(authService.isCurrentUserLoggedIn());
+      // return authService.getCurrentUserAuthToken();
+      return localStorage.getItem('currentUser');
     },
   };
 }
@@ -34,6 +36,7 @@ export function jwtOptionsFactory(authService: AuthService): JwtConfig {
     JwtModule.forRoot({
       jwtOptionsProvider: {
         provide: JWT_OPTIONS,
+        deps: [AuthService],
         useFactory: jwtOptionsFactory,
       }
     })
