@@ -10,12 +10,9 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtConfig, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 
-export function jwtOptionsFactory(authService: AuthService): JwtConfig {
+export function jwtOptionsFactory(): JwtConfig {
   return {
     tokenGetter: () => {
-      // console.log('inside token getter!');
-      // console.log(authService.isCurrentUserLoggedIn());
-      // return authService.getCurrentUserAuthToken();
       return localStorage.getItem('currentUser');
     },
   };

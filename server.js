@@ -7,10 +7,10 @@ const app = express();
 
 app.use('/api', proxy('http://localhost:8080'));
 
-app.use(express.static('dist/login-gateway'));
+app.use(express.static('login-gateway'));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/login-gateway/index.html'));
+  res.sendFile(path.join(__dirname, 'login-gateway/index.html'));
 });
 
 const port = '80';
