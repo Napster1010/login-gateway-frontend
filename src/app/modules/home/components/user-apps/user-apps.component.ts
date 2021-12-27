@@ -27,9 +27,10 @@ export class UserAppsComponent implements OnInit {
         take(1),
         // Logout the current user before navigating the the app
         tap(() => this.authService.logoutCurrentUser())
-      ).subscribe();
-    const navigationUrl = `${appUrl}?t=${authToken}`;
-    window.location.href = navigationUrl;
+      ).subscribe(() => {
+        const navigationUrl = `${appUrl}?t=${authToken}`;
+        window.location.href = navigationUrl;
+      });
   }
 
 }
