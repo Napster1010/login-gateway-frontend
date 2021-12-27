@@ -2,7 +2,6 @@ import { JwtInterceptor } from './data/helpers/jwt.interceptor';
 import { AuthService } from './data/services/auth/auth.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,10 +10,11 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtConfig, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 
-export function jwtOptionsFactory(authService: AuthService): JwtConfig {
+export function jwtOptionsFactory(): JwtConfig {
   return {
     tokenGetter: () => {
-      return authService.getCurrentUserAuthToken();
+      // TODO: Figure out a way to use the method from AuthenticationService here!
+      return localStorage.getItem('currentUser');
     },
   };
 }
@@ -34,6 +34,7 @@ export function jwtOptionsFactory(authService: AuthService): JwtConfig {
     JwtModule.forRoot({
       jwtOptionsProvider: {
         provide: JWT_OPTIONS,
+        deps: [AuthService],
         useFactory: jwtOptionsFactory,
       }
     })

@@ -4,15 +4,25 @@
 
 export const environment = {
   production: false,
+  // REGISTRATION_API: {
+  //   GENERATE_OTP: 'http://localhost:3000/api/registration/new',
+  //   FINALIZE: 'http://localhost:3000/api/registration/finalize'
+  // },
+  // LOGIN_API: 'http://localhost:3000/api/auth/login/',
+  // LOGOUT_API: 'http://localhost:3000/api/auth/logout/',
+  // USER_API: 'http://localhost:3000/api/user/',
+  // USER_APPS_API: 'http://localhost:3000/api/user-app-mapping/apps/',
+  // UPDATE_APP_NAVIGATION_ACTIVITY_API: 'http://localhost:3000/api/user-activity-log/',
+  // SESSION_TIME: 4.5
   REGISTRATION_API: {
-    GENERATE_OTP: 'http://localhost:8080/registration/new',
-    FINALIZE: 'http://localhost:8080/registration/finalize'
+    GENERATE_OTP: 'http://apps.mpwin.co.in/api/registration/new',
+    FINALIZE: 'http://apps.mpwin.co.in/api/registration/finalize'
   },
-  LOGIN_API: 'http://localhost:8080/auth/login/',
-  LOGOUT_API: 'http://localhost:8080/auth/logout/',
-  USER_API: 'http://localhost:8080/user/',
-  USER_APPS_API: 'http://localhost:8080/user-app-mapping/apps/',
-  UPDATE_APP_NAVIGATION_ACTIVITY_API: 'http://localhost:8080/user-activity-log/',
+  LOGIN_API: 'http://apps.mpwin.co.in/api/auth/login/',
+  LOGOUT_API: 'http://apps.mpwin.co.in/api/auth/logout/',
+  USER_API: 'http://apps.mpwin.co.in/api/user/',
+  USER_APPS_API: 'http://apps.mpwin.co.in/api/user-app-mapping/apps/',
+  UPDATE_APP_NAVIGATION_ACTIVITY_API: 'http://apps.mpwin.co.in/api/user-activity-log/',
   SESSION_TIME: 4.5
 };
 
