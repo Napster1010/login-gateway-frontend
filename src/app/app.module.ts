@@ -13,6 +13,7 @@ import { JwtConfig, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 export function jwtOptionsFactory(): JwtConfig {
   return {
     tokenGetter: () => {
+      // TODO: Figure out a way to use the method from AuthenticationService here!
       return localStorage.getItem('currentUser');
     },
   };
