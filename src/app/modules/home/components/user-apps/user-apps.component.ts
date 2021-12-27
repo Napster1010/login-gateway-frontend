@@ -20,6 +20,7 @@ export class UserAppsComponent implements OnInit {
   }
 
   public navigateToApp(appId: number, appUrl: string) {
+    const authToken = this.authService.getCurrentUserAuthToken();
     // Send request to the backend for updating the activity log.
     this.userActivityLogService.updateAppNavigationActivity(appId)
       .pipe(
@@ -27,8 +28,8 @@ export class UserAppsComponent implements OnInit {
         // Logout the current user before navigating the the app
         tap(() => this.authService.logoutCurrentUser())
       ).subscribe();
-
-    window.location.href = appUrl;
+    const navigationUrl = `${appUrl}?t=${authToken}`;
+    window.location.href = navigationUrl;
   }
 
 }
