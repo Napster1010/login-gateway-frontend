@@ -15,14 +15,14 @@ export const environment = {
   // UPDATE_APP_NAVIGATION_ACTIVITY_API: 'http://localhost:3000/api/user-activity-log/',
   // SESSION_TIME: 4.5
   REGISTRATION_API: {
-    GENERATE_OTP: 'http://apps.mpwin.co.in/api/registration/new',
-    FINALIZE: 'http://apps.mpwin.co.in/api/registration/finalize'
+    GENERATE_OTP: 'https://apps.mpwin.co.in/api/registration/new',
+    FINALIZE: 'https://apps.mpwin.co.in/api/registration/finalize'
   },
-  LOGIN_API: 'http://apps.mpwin.co.in/api/auth/login/',
-  LOGOUT_API: 'http://apps.mpwin.co.in/api/auth/logout/',
-  USER_API: 'http://apps.mpwin.co.in/api/user/',
-  USER_APPS_API: 'http://apps.mpwin.co.in/api/user-app-mapping/apps/',
-  UPDATE_APP_NAVIGATION_ACTIVITY_API: 'http://apps.mpwin.co.in/api/user-activity-log/',
+  LOGIN_API: 'https://apps.mpwin.co.in/api/auth/login/',
+  LOGOUT_API: 'https://apps.mpwin.co.in/api/auth/logout/',
+  USER_API: 'https://apps.mpwin.co.in/api/user/',
+  USER_APPS_API: 'https://apps.mpwin.co.in/api/user-app-mapping/apps/',
+  UPDATE_APP_NAVIGATION_ACTIVITY_API: 'https://apps.mpwin.co.in/api/user-activity-log/',
   SESSION_TIME: 4.5
 };
 
