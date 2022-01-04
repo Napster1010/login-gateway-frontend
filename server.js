@@ -7,12 +7,9 @@ const http = require('http');
 
 const app = express();
 
-app.disable('view cache');
 app.use('/api', proxy('http://localhost:8080'));
 
-app.use(express.static('login-gateway', {
-  etag: false
-}));
+app.use(express.static('login-gateway'));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'login-gateway/index.html'));
