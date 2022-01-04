@@ -1,7 +1,9 @@
 const express = require('express');
 const proxy = require('express-http-proxy');
-const http = require('http');
+const https = require('https');
 const path = require('path');
+const fs = require('fs');
+const http = require('http');
 
 const app = express();
 
@@ -13,8 +15,19 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'login-gateway/index.html'));
 });
 
-const port = '80';
+const httpsPort = '443';
+const httpPort = '80';
 
- const server = http.createServer(app);
+const serverOptions = {
+  key: fs.readFileSync('cert/privkey.pem'),
+  cert: fs.readFileSync('cert/fullchain.pem')
+};
 
- server.listen(port, () => console.log(`Server running on localhost:${port}`));
+const httpsServer = https.createServer(serverOptions, app);
+httpsServer.listen(httpsPort, () => console.log(`Server running on localhost:${httpsPort}`));
+
+const httpServer = http.createServer((req, res) => {
+  res.writeHead(301, {"Location": "https://" + req.headers['host'] + req.url});
+  res.end();
+});
+httpServer.listen(httpPort);

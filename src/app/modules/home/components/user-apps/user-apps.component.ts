@@ -3,6 +3,7 @@ import { AuthService } from './../../../../data/services/auth/auth.service';
 import { App } from './../../../../data/schemas/App';
 import { Component, Input, OnInit } from '@angular/core';
 import { UserActivityLogService } from 'src/app/data/services/user-activity-log/user-activity-log.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-apps',
@@ -14,7 +15,7 @@ export class UserAppsComponent implements OnInit {
   @Input()
   public userApps: App[];
 
-  constructor(private authService: AuthService, private userActivityLogService: UserActivityLogService) { }
+  constructor(private authService: AuthService, private userActivityLogService: UserActivityLogService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -27,9 +28,11 @@ export class UserAppsComponent implements OnInit {
         take(1),
         // Logout the current user before navigating the the app
         tap(() => this.authService.logoutCurrentUser())
-      ).subscribe();
-    const navigationUrl = `${appUrl}?t=${authToken}`;
-    window.location.href = navigationUrl;
+      ).subscribe(() => {
+        const navigationUrl = `${appUrl}?t=${authToken}`;
+        window.open(navigationUrl, '_blank');
+        this.router.navigate(['/login']);
+      });
   }
 
 }
